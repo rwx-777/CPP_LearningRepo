@@ -1,6 +1,6 @@
 //2019
 //Simple C++ Learning Script
-//written by rwx777
+//written by rwx-777
 
 #include <iostream>
 #include <cmath> //math functions
