@@ -15,8 +15,89 @@ class Book { //A Class is the template/specification of a data type
         string title;
         string author;
         int pages;
+
+        //A Constructor is a function that gets called whenever we create a Book Object
+        //They even accept pa rameters
+        Book(string aTitle, string aAuthor, int aPages){
+            cout << "Creating Object" << endl;
+            title = aTitle;
+            author = aAuthor;
+            pages = aPages;
+             
+        }
 };
 //An object is an actual instance of that class
+
+class Student {
+    public:
+        string StudentName;
+        string mayor;
+        double gpa;
+        Student(string aName,string aMajor, double aGpa) {
+            StudentName = aName;
+            mayor = aMajor;
+            gpa = aGpa;
+        }
+
+        bool hasHonors() {
+            if(gpa >= 3.5){
+                return true;
+            }
+            return false;
+        }
+};
+
+//Class Movie 
+//In this Class we invorce valid Inputs 
+
+class Movie {
+    private:
+        string rating;
+    public: //public means any other code outside of this class can access it
+        string title;
+        string director;
+    
+        Movie(string aTitle, string aDirector, string aRating){
+            title = aTitle;
+            director = aDirector;
+            setRating(aRating);
+        }
+
+        void setRating(string aRating){
+            rating = aRating;
+        }
+};
+
+//Class Chef
+
+class Chef {
+    public:
+        void makeChicken() {
+            cout << "The chef makes chicken" << endl;
+        }
+        void makeSalad() {
+            cout << "The chef makes salad" <<endl;
+        }
+        void makSpecialDish() {
+            cout << "The chef makes a special dish" << endl;
+        }
+
+};
+
+//Class ItalianChef inherents from Class Chef
+
+class ItalianChef : public Chef { //our italian Chef can do everything chef can and more :0
+    public:
+
+        void makePasta(){
+            cout << "The Chef makes pasta, mama mia" << endl;
+        }
+
+        //Now lets check out how overriding a function works 
+        void makeSpecialDish(){ //this will automatically override the function in chef
+            cout << "The chef makes chicken parma" << endl;
+        }
+};
 
 
 //Functions
@@ -392,13 +473,14 @@ int main() {
     //Classes & Objects
 
     //New Class created on line 11
-
+    //Works without the constructor
+    /*
     Book book1;
     book1.title = "The Great Gatsby";
     book1.author = "F. Scott Fitzgerald";
     book1.pages = 512;
 
-    cout << book1.title << endl;
+    cout << book1.title << endl; //Prints out book1s author
 
     Book book2;
     book2.title = "The Lord of the Rings";
@@ -406,8 +488,39 @@ int main() {
     book2.pages = 700;
 
     cout << book2.title << endl;
+    */
 
+    //More efficient works with Constructor
+    //Book Class
+
+    Book book1("Harry Potter","JK Rowling", 500);
+    Book book2("Lord of the Rings","Tolkein",700);
+
+    cout << book1.title;
+
+    //Student class 
+
+    Student student1("Elliot", "CyberSec", 3.6);
+    Student student2("Sarah", "Psychology", 2.7);
+
+    cout << student1.hasHonors(); //0 meas false 1 means true
+
+    //Movie Class
+
+    Movie Avengers("The Avengers", "Joss Whedon", "PG-13");
     
+    Avengers.setRating("Dog"); //Sets the rating to Dog
+    
+
+    //Lets create a instance of the Class Chef
+    Chef chefRobert;
+    chefRobert.makeChicken(); //now Chef robert will make some chicken 
+
+    ItalianChef Luigi;
+    Luigi.makeChicken(); //Iherents all functions from class Chef
+    Luigi.makePasta(); //Ch3f makes Pasta :)
+
+   //###############################################################################################################
 
 
 
